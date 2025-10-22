@@ -1,0 +1,9 @@
+import itertools
+import string
+
+chars = string.ascii_letters + string.digits + "!@#$%^&*"
+with open("pass.txt", "w") as f:
+    for combo in itertools.product(chars, repeat=8):
+        f.write(''.join(combo) + '\n')
+        if f.tell() > 1000000:  # Limit file size
+            break
